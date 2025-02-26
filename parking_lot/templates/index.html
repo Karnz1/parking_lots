@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="cont d-flex flex-wrap gap-3">
+        {% for item in parking_lot_data %}
+            {% if item.status_chenyon == "מלא" %}
+                <div class="card text-bg-danger mb-3 bg-danger item" style="max-width: 18rem;">
+                    <div class="card-header text-center">{{ item.shem_chenyon }}</div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{ item.status_chenyon }}</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+            {% else %}
+                <div class="card text-bg-success mb-3 bg-success item" style="max-width: 18rem;">
+                    <div class="card-header text-center">{{ item.shem_chenyon }}</div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{ item.status_chenyon }}</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}
