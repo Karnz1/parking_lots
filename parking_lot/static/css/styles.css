@@ -1,11 +1,37 @@
 
 .cont {
-    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
 }
 
-.item {
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+.card {
+    flex: 1 1 calc(33.333% - 1rem); /* Adjust width based on your layout */
+    min-width: 18rem;
+    max-width: 18rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body {
+    flex-grow: 1; /* Ensures equal height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-header {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.card-title {
+    font-size: 1.75rem;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 1.25rem;
+    font-weight: bold;
 }
