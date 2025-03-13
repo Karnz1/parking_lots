@@ -1,0 +1,6 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: example-config
+data:
+  parking_api_url: https://gisn.tel-aviv.gov.il/GisOpenData/service.asmx/GetLayer?layerCode=970&layerWhere=&xmin=&ymin=&xmax=&ymax=&projection=

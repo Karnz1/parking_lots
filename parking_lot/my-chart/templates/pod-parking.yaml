@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ .Values.pod.name }}"
+  labels:
+    app: parking-lot
+spec:
+  containers:
+    - name: parking-lot
+      image: parking_test:latest
+      imagePullPolicy: Never
+      ports:
+        - containerPort: 9000
