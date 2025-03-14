@@ -1,13 +1,16 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: "{{ .Values.pod.name }}"
+  name: parking-lot-app
   labels:
-    app: parking-lot
+    app: parking-lot-app
 spec:
   containers:
-    - name: parking-lot
+    - name: parking-lot-app
       image: parking_test:latest
       imagePullPolicy: Never
       ports:
         - containerPort: 9000
+      envFrom:
+        - configMapRef:
+            name: example-config
