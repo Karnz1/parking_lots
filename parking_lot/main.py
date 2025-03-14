@@ -1,12 +1,13 @@
 from flask import Flask, render_template
 import requests
+import os
 
 app = Flask(__name__, template_folder='templates', static_folder='static', static_url_path='/')
-
+PARKING_API_URL = os.environ.get("parking_api_url")
 
 @app.route("/", methods=['GET'])
 def index():
-    response = requests.get("https://gisn.tel-aviv.gov.il/GisOpenData/service.asmx/GetLayer?layerCode=970&layerWhere=&xmin=&ymin=&xmax=&ymax=&projection=")
+    response = requests.get(PARKING_API_URL)
     data = response.json()
     items = data.get("features")
     parking_lot_data = []
