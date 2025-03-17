@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: parking-lot-deployment
+  labels:
+    app: parking-lot-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: parking-lot-app
+  template:
+    metadata:
+      labels:
+        app: parking-lot-app
+    spec:
+      containers:
+        - name: parking-lot-app
+          image: parking-test:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 9000
+          envFrom:
+            - configMapRef:
+                name: example-config
