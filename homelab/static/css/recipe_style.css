@@ -1,0 +1,22 @@
+body{
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #04021b;
+}
+
+.recipe-form-container {
+    display: flex;
+    justify-content: center;  /* Center horizontally */
+    align-items: center;      /* Center vertically (if needed) */
+    height: 100vh;            /* Full viewport height (optional) */
+}
+
+.recipe-form {
+    width: 90%;               /* 80% of the page width */
+    max-width: 600px;         /* Optional: Restrict max width */
+    background: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
