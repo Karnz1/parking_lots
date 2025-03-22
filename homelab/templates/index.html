@@ -3,5 +3,8 @@
 {% block content %}
     <div>
         <p>this is the landing page! :> </p>
+        <a href="{{ url_for('create_recipe') }}">Create Recipe ! </a>
+        <a href="{{ url_for('recipes') }}">Recipes</a>
+        <a href="{{ url_for('parking_tlv') }}">Parking TLV</a>
     </div>
 {% endblock %}

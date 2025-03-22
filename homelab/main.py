@@ -1,10 +1,11 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for, redirect
 import requests
 import os, socket
+from utils import add_recipe_to_db, get_recipes_from_db
 
 app = Flask(__name__, template_folder='templates', static_folder='static', static_url_path='/')
-PARKING_API_URL = os.environ.get("parking_api_url")
-
+#PARKING_API_URL = os.environ.get("parking_api_url")
+PARKING_API_URL = "https://gisn.tel-aviv.gov.il/GisOpenData/service.asmx/GetLayer?layerCode=970&layerWhere=&xmin=&ymin=&xmax=&ymax=&projection="
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -24,7 +25,9 @@ def parking_tlv():
 
 @app.route("/recipes")
 def recipes():
-    return render_template('recipes.html')
+    recipes = get_recipes_from_db()
+    print(recipes)
+    return render_template('recipes.html', recipes=recipes)
 
 
 @app.route("/create_recipe", methods=['GET', 'POST'])
@@ -49,7 +52,8 @@ def create_recipe():
         if 'meal_type' in request.form.keys():
             meal_type = request.form['meal_type']
             recipe['meal_type'] = meal_type
-        return recipe
+        add_recipe_to_db(recipe)
+        return redirect(url_for('recipes'))
 
 
 if __name__ == "__main__":
